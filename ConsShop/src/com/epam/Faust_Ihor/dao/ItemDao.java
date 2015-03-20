@@ -1,55 +1,27 @@
 package com.epam.Faust_Ihor.dao;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
-import com.epam.Faust_Ihor.storage.Bucket;
-import com.epam.Faust_Ihor.storage.OrderStorage;
 
-public class ItemDao {
+public interface ItemDao {
 
-	private Map<Long, WritingGood> data;
+	WritingGood get(Long code);
 	
-	private Bucket bucket;
-	private OrderStorage orders;
+	List<WritingGood> getAll();
 	
-	public ItemDao(Map<Long, WritingGood> data, Bucket bucket, OrderStorage orders) {
-		this.data = data;
-		this.bucket = bucket;
-		this.orders = orders;
-	}
+	void addToBucket(Long code);
+		
+	void addOrder(Date date, List<WritingGood> wgList);
 	
-	public void addToBucket(Long code) {
-		bucket.addToBucket(data.get(code));
-	}
+	Order nearestTo(Date date);
 	
-	public WritingGood get(Long code) {
-		return data.get(code);
-	}
+	List<Order> getOrdersBetween(Date first, Date last);
 	
-	public void addOrder(Date date, List<WritingGood> wgList) {
-		orders.add(date, new Order(wgList, date));
-	}
+	Set<Entry<Long, Integer>> getItemsFromBucket();
 	
-	public Order nearestTo(Date date) {
-		return orders.nearestTo(date);
-	}
-	
-	public List<Order> getOrdersBetween(Date first, Date last) {
-		return orders.findOrdersBetween(first, last); 
-	}
-	
-	public List<WritingGood> getAllItems() {
-		return new ArrayList<WritingGood>(data.values());
-	}
-	
-	public Set<Entry<Long, Integer>> getItemsFromBucket() {
-		return bucket.getMap().entrySet();
-	}
 }

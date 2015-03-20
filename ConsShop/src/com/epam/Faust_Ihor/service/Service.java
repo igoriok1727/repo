@@ -5,9 +5,9 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import com.epam.Faust_Ihor.dao.ItemDao;
+import com.epam.Faust_Ihor.dao.list.ListItemDao;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 
@@ -20,7 +20,7 @@ public class Service {
 	}
 
 	public List<WritingGood> getAllItems() {
-		return data.getAllItems();
+		return data.getAll();
 
 	}
 
