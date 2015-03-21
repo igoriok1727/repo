@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 
-public interface ItemDao {
+public interface GoodDao {
 
 	WritingGood get(Long code);
 	

@@ -7,20 +7,20 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.epam.Faust_Ihor.dao.ItemDao;
+import com.epam.Faust_Ihor.dao.GoodDao;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.storage.Bucket;
 import com.epam.Faust_Ihor.storage.OrderStorage;
 
-public class ConsoleItemDao implements ItemDao {
+public class MapGoodDao implements GoodDao {
 
     private Map<Long, WritingGood> data;
 
     private Bucket bucket;
     private OrderStorage orders;
 
-    public ConsoleItemDao(Map<Long, WritingGood> data, Bucket bucket,
+    public MapGoodDao(Map<Long, WritingGood> data, Bucket bucket,
 	    OrderStorage orders) {
 	this.data = data;
 	this.bucket = bucket;
