@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.dao.list;
+package com.epam.Faust_Ihor.dao.console;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,14 +13,14 @@ import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.storage.Bucket;
 import com.epam.Faust_Ihor.storage.OrderStorage;
 
-public class ListItemDao implements ItemDao {
+public class ConsoleItemDao implements ItemDao {
 
     private Map<Long, WritingGood> data;
 
     private Bucket bucket;
     private OrderStorage orders;
 
-    public ListItemDao(Map<Long, WritingGood> data, Bucket bucket,
+    public ConsoleItemDao(Map<Long, WritingGood> data, Bucket bucket,
 	    OrderStorage orders) {
 	this.data = data;
 	this.bucket = bucket;

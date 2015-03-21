@@ -19,7 +19,6 @@ public class Dialog {
     public void runNextInt() {
 	Scanner scn = new Scanner(System.in);
 
-	/* Обработать некорректный ввод */
 	int a = -1;
 	do {
 	    Shop.showDialog();
@@ -38,13 +37,13 @@ public class Dialog {
     public void run() {
 	Scanner scn = new Scanner(System.in);
 
-	/* Обработать некорректный ввод */
 	int a = -1;
 	do {
 	    Shop.showDialog();
 	    try {
 		a = Integer.valueOf(scn.nextLine());
 	    } catch (NumberFormatException nfe) {
+		System.out.println("Cpmmand is incorrect");
 		a = -1;
 	    }
 	    ConsoleCommandContainer.get(a).dialog(service);

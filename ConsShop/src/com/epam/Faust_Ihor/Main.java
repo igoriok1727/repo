@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import com.epam.Faust_Ihor.dao.ItemDao;
-import com.epam.Faust_Ihor.dao.list.ListItemDao;
+import com.epam.Faust_Ihor.dao.console.ConsoleItemDao;
 import com.epam.Faust_Ihor.entity.Notebook;
 import com.epam.Faust_Ihor.entity.Pen;
 import com.epam.Faust_Ihor.entity.Pencil;
@@ -44,7 +44,7 @@ public class Main {
     public static void main(String[] args) {
 	Bucket bucket = new Bucket();
 	OrderStorage orders = new OrderStorage();
-	ItemDao dao = new ListItemDao(data, bucket, orders);
+	ItemDao dao = new ConsoleItemDao(data, bucket, orders);
 	Service service = new Service(dao);
 	Dialog dialog = new Dialog(service);
 	
