@@ -51,9 +51,9 @@ public class Pencil extends WritingItem {
 
 	@Override
 	public String toString() {
-		return "Pencil [thickness=" + thickness + ", code()=" + code()
-				+ ", getColor()=" + getColor() + ", getTitle()=" + getTitle()
-				+ ", getPrice()=" + getPrice() + "]";
+		return "Pencil [thickness=" + thickness + ", code=" + code()
+				+ ", color=" + getColor() + ", title=" + getTitle()
+				+ ", price=" + getPrice() + "]";
 	}
 
 	public long code(){

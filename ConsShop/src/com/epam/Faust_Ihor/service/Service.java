@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import com.epam.Faust_Ihor.dao.ItemDao;
-import com.epam.Faust_Ihor.dao.list.ListItemDao;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 
@@ -24,8 +23,8 @@ public class Service {
 
 	}
 
-	public void addToBucket(Long code) {
-		data.addToBucket(code);
+	public WritingGood addToBucket(Long code) {
+		return data.addToBucket(code);
 	}
 
 	public double buyAll(Date date) {
@@ -35,6 +34,7 @@ public class Service {
 			total += wg.getPrice();
 		}
 		data.addOrder(date, wgList);
+		data.cleanBucket();
 		return total;
 	}
 
@@ -54,7 +54,10 @@ public class Service {
 
 		while (it.hasNext()) {
 			Entry<Long, Integer> entry = it.next();
-			wgList.add(data.get(entry.getKey()));
+			int count = entry.getValue();
+			for (int i = 0; i < count; i++) {
+			    wgList.add(data.get(entry.getKey()));
+			}
 		}
 		
 		return wgList;

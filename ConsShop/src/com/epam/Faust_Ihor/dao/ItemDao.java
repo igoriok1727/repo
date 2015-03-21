@@ -14,7 +14,7 @@ public interface ItemDao {
 	
 	List<WritingGood> getAll();
 	
-	void addToBucket(Long code);
+	WritingGood addToBucket(Long code);
 		
 	void addOrder(Date date, List<WritingGood> wgList);
 	
@@ -23,5 +23,7 @@ public interface ItemDao {
 	List<Order> getOrdersBetween(Date first, Date last);
 	
 	Set<Entry<Long, Integer>> getItemsFromBucket();
+	
+	void cleanBucket();
 	
 }

@@ -44,8 +44,8 @@ public class Notebook extends WritingGood {
 	
 	@Override
 	public String toString() {
-		return "Notebook [pageCount=" + pageCount + ", code()=" + code()
-				+ ", getTitle()=" + getTitle() + ", getPrice()=" + getPrice()
+		return "Notebook [pageCount=" + pageCount + ", code=" + code()
+				+ ", title=" + getTitle() + ", price=" + getPrice()
 				+ "]";
 	}
 

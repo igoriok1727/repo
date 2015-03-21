@@ -49,8 +49,8 @@ public class Pen extends WritingItem {
 
 	@Override
 	public String toString() {
-		return "Pen [type=" + type + ", code()=" + code() + ", getColor()="
-				+ getColor() + ", getTitle()=" + getTitle() + ", getPrice()="
+		return "Pen [type=" + type + ", code=" + code() + ", color="
+				+ getColor() + ", title=" + getTitle() + ", price="
 				+ getPrice() + "]";
 	}
 
