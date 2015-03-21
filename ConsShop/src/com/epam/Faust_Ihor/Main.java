@@ -2,7 +2,6 @@ package com.epam.Faust_Ihor;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import com.epam.Faust_Ihor.dao.ItemDao;
 import com.epam.Faust_Ihor.dao.list.ListItemDao;
@@ -13,8 +12,7 @@ import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.service.Service;
 import com.epam.Faust_Ihor.storage.Bucket;
 import com.epam.Faust_Ihor.storage.OrderStorage;
-import com.epam.Faust_Ihor.ui.Shop;
-import com.epam.Faust_Ihor.ui.console.ConsoleCommandContainer;
+import com.epam.Faust_Ihor.ui.Dialog;
 
 public class Main {
 
@@ -48,19 +46,9 @@ public class Main {
 	OrderStorage orders = new OrderStorage();
 	ItemDao dao = new ListItemDao(data, bucket, orders);
 	Service service = new Service(dao);
-
-	Scanner scn = new Scanner(System.in);
-
-	/*Обработать некорректный ввод*/
-	int a;
-	do {
-	    Shop.showDialog();
-	    a = scn.nextInt();
-	    ConsoleCommandContainer.get(a).dialog(service);
-
-	} while (a != 0);
-
-	scn.close();
+	Dialog dialog = new Dialog(service);
+	
+	dialog.run();
     }
 
 }
