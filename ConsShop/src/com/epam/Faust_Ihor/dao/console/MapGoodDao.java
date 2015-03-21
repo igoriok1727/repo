@@ -22,12 +22,21 @@ public class MapGoodDao implements GoodDao {
 
     public MapGoodDao(Map<Long, WritingGood> data, Bucket bucket,
 	    OrderStorage orders) {
+	if (data == null) {
+	    throw new NullPointerException("data is null");
+	}
+	if (bucket == null) {
+	    throw new NullPointerException("bucket is null");
+	}
+	if (orders == null) {
+	    throw new NullPointerException("orders is null");
+	}
 	this.data = data;
 	this.bucket = bucket;
 	this.orders = orders;
     }
 
-    public WritingGood get(Long code) {
+    public WritingGood get(long code) {
 	return data.get(code);
     }
 
@@ -35,9 +44,11 @@ public class MapGoodDao implements GoodDao {
 	return new ArrayList<WritingGood>(data.values());
     }
 
-    public WritingGood addToBucket(Long code) {
+    public WritingGood addToBucket(long code) {
 	WritingGood wg = data.get(code);
-	bucket.addToBucket(wg);
+	if (wg != null) {
+	    bucket.addToBucket(wg);
+	}
 	return wg;
     }
 

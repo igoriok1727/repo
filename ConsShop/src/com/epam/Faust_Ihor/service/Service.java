@@ -12,55 +12,66 @@ import com.epam.Faust_Ihor.entity.WritingGood;
 
 public class Service {
 
-	private GoodDao data;
+    private GoodDao data;
 
-	public Service(GoodDao data) {
-		this.data = data;
+    public Service(GoodDao data) {
+	if (data == null) {
+	    throw new NullPointerException("data is null");
+	}
+	this.data = data;
+    }
+
+    public List<WritingGood> getAllItems() {
+	return data.getAll();
+
+    }
+
+    public WritingGood addToBucket(Long code) {
+	return data.addToBucket(code);
+    }
+
+    public boolean isBucketEmpty() {
+	return data.getItemsFromBucket().size() == 0;
+    }
+
+    /* Is it necessary to consider the case when date is null? */
+    public double buyAll(Date date) {
+
+	List<WritingGood> wgList = getListItemsFromTheBucket();
+	double total = 0;
+
+	for (WritingGood wg : wgList) {
+	    total += wg.getPrice();
+	}
+	data.addOrder(date, wgList);
+	data.cleanBucket();
+
+	return total;
+    }
+
+    public Order findNearestOrder(Date date) {
+	return data.nearestTo(date);
+    }
+
+    public List<Order> getOrdersBetween(Date first, Date last) {
+	return data.getOrdersBetween(first, last);
+    }
+
+    public List<WritingGood> getListItemsFromTheBucket() {
+	List<WritingGood> wgList = new ArrayList<WritingGood>();
+
+	Iterator<Entry<Long, Integer>> it = data.getItemsFromBucket()
+		.iterator();
+
+	while (it.hasNext()) {
+	    Entry<Long, Integer> entry = it.next();
+	    int count = entry.getValue();
+	    for (int i = 0; i < count; i++) {
+		wgList.add(data.get(entry.getKey()));
+	    }
 	}
 
-	public List<WritingGood> getAllItems() {
-		return data.getAll();
-
-	}
-
-	public WritingGood addToBucket(Long code) {
-		return data.addToBucket(code);
-	}
-
-	public double buyAll(Date date) {
-		double total = 0;
-		List<WritingGood> wgList = getListItemsFromTheBucket();
-		for (WritingGood wg : wgList) {
-			total += wg.getPrice();
-		}
-		data.addOrder(date, wgList);
-		data.cleanBucket();
-		return total;
-	}
-
-	public Order findNearestOrder(Date date) {
-		return data.nearestTo(date);
-	}
-
-	public List<Order> getOrdersBetween(Date first, Date last) {
-		return data.getOrdersBetween(first, last);
-	}
-
-	public List<WritingGood> getListItemsFromTheBucket() {
-		List<WritingGood> wgList = new ArrayList<WritingGood>();
-
-		Iterator<Entry<Long, Integer>> it = data.getItemsFromBucket()
-				.iterator();
-
-		while (it.hasNext()) {
-			Entry<Long, Integer> entry = it.next();
-			int count = entry.getValue();
-			for (int i = 0; i < count; i++) {
-			    wgList.add(data.get(entry.getKey()));
-			}
-		}
-		
-		return wgList;
-	}
+	return wgList;
+    }
 
 }

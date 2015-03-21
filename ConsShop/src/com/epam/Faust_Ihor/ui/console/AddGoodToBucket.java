@@ -13,9 +13,21 @@ public class AddGoodToBucket extends Shop {
     public void dialog(Service service) {
 	System.out.println("Adding a good to a bucket");
 	System.out.print("Code: ");
-	long code = new Scanner(System.in).nextLong();
-	WritingGood wg = service.addToBucket(code);
-	System.out.println("You've added to the bucket a new " + wg + "\n");
+	long code = 0;
+	try {
+	    code = Long.valueOf(new Scanner(System.in).nextLine());
+	    WritingGood wg = service.addToBucket(code);
+
+	    if (wg == null) {
+		System.out.println("No good for this code\n");
+	    } else {
+		System.out.println("You've added to the bucket a new " + wg
+			+ "\n");
+	    }
+	} catch (NumberFormatException nfe) {
+	    System.out.println("Code is incorrect\n");
+	}
+
     }
 
 }

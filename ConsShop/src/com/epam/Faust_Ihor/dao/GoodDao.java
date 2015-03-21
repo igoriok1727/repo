@@ -10,11 +10,11 @@ import com.epam.Faust_Ihor.entity.WritingGood;
 
 public interface GoodDao {
 
-	WritingGood get(Long code);
+	WritingGood get(long code);
 	
 	List<WritingGood> getAll();
 	
-	WritingGood addToBucket(Long code);
+	WritingGood addToBucket(long code);
 		
 	void addOrder(Date date, List<WritingGood> wgList);
 	

@@ -13,11 +13,17 @@ public class FindNearestOrder extends Shop {
     public void dialog(Service service) {
 	System.out.println("Searching nearest order after a given date: ");
 	System.out.print("Enter date: ");
-	@SuppressWarnings("resource")
-	Order order = service.findNearestOrder(new Date(new Scanner(System.in).nextLong()));
-	System.out.println("Date: " + order.getDate());
-	order.printGoods();
+
+	try {
+	    @SuppressWarnings("resource")
+	    long date = Long.valueOf(new Scanner(System.in).nextLine());
+	    Order order = service.findNearestOrder(new Date(date));
+	    System.out.println("Date: " + order.getDate());
+	    order.printGoods();
+	} catch (NumberFormatException nfe) {
+	    System.out.println("Incorrect format");
+	}
+
 	System.out.println();
     }
-
 }

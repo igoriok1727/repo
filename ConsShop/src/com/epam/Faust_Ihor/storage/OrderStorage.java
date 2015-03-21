@@ -15,10 +15,6 @@ public class OrderStorage {
 		map.put(date, order);
 	}
 	
-	public Order findOrderAfter(Date date) {
-		return map.ceilingEntry(date).getValue();
-	}
-	
 	public List<Order> findOrdersBetween(Date least, Date highest) {
 		return new ArrayList<Order>(map.subMap(least, true, highest, true).values());
 	}
