@@ -1,9 +1,10 @@
 package com.epam.Faust_Ihor;
 
+import java.text.ParseException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.epam.Faust_Ihor.dao.GoodDao;
+import com.epam.Faust_Ihor.dao.Dao;
 import com.epam.Faust_Ihor.dao.console.MapDao;
 import com.epam.Faust_Ihor.entity.Notebook;
 import com.epam.Faust_Ihor.entity.Pen;
@@ -41,14 +42,15 @@ public class Main {
 	data.put(PENCIL3.code(), PENCIL3);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 	Bucket bucket = new Bucket();
 	OrderStorage orders = new OrderStorage();
-	GoodDao dao = new MapDao(data, bucket, orders);
+	Dao dao = new MapDao(data, bucket, orders);
 	Service service = new Service(dao);
 	Dialog dialog = new Dialog(service);
 	
 	dialog.run();
+	
     }
 
 }

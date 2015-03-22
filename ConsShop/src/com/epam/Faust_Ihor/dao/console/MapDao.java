@@ -7,13 +7,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.epam.Faust_Ihor.dao.GoodDao;
+import com.epam.Faust_Ihor.dao.Dao;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.storage.Bucket;
 import com.epam.Faust_Ihor.storage.OrderStorage;
 
-public class MapDao implements GoodDao {
+public class MapDao implements Dao {
 
     private MapBucketDao bucket;
     
