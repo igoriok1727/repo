@@ -32,7 +32,7 @@ public class FindOrdersBetweenDates extends Shop {
 		+ "): ");
 	Date second = dr.readDate("Enter second date(format " + dr.getFormat()
 		+ "): ");
-	List<Order> orders = service.getOrdersBetween(first, second);
+	List<Order> orders = service.findOrdersBetween(first, second);
 
 	return orders;
     }

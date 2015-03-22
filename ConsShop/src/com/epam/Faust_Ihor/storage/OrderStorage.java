@@ -16,7 +16,7 @@ public class OrderStorage {
 	map.put(date, order);
     }
 
-    public List<Order> getOrdersBetween(Date least, Date highest) {
+    public List<Order> findOrdersBetween(Date least, Date highest) {
 	return new ArrayList<Order>(map.subMap(least, true, highest, true)
 		.values());
     }

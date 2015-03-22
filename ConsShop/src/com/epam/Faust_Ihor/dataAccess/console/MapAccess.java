@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
 import com.epam.Faust_Ihor.entity.Order;
@@ -31,7 +29,7 @@ public class MapAccess implements DataAccessObject {
 	if (orders == null) {
 	    throw new NullPointerException("orders is null");
 	}
-	this.bucket = new BucketMapAccess(bucket);
+	this.bucket = new BucketMapAccess(bucket, goods);
 	this.orders = new OrderMapAccess(orders);
 	this.goods = new GoodInMapAccess(goods);
     }
@@ -52,11 +50,10 @@ public class MapAccess implements DataAccessObject {
 	return wg;
     }
     
-    public Set<Entry<Long, Integer>> getItemsFromBucket() {
-	return bucket.getAllAsSet();
+    public List<WritingGood> getItemsFromBucket() {
+	return bucket.getAllAsList();
     }
 
-    @Override
     public void cleanBucket() {
 	bucket.cleanBucket();
 
@@ -70,8 +67,8 @@ public class MapAccess implements DataAccessObject {
 	return orders.nearestTo(date);
     }
 
-    public List<Order> getOrdersBetween(Date first, Date last) {
-	return orders.getOrdersBetween(first, last);
+    public List<Order> findOrdersBetween(Date first, Date last) {
+	return orders.findOrdersBetween(first, last);
     }
     
 }

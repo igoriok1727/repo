@@ -26,8 +26,8 @@ public class OrderMapAccess {
 	return orders.nearestTo(date);
     }
 
-    public List<Order> getOrdersBetween(Date first, Date last) {
-	return orders.getOrdersBetween(first, last);
+    public List<Order> findOrdersBetween(Date first, Date last) {
+	return orders.findOrdersBetween(first, last);
     }
     
 }

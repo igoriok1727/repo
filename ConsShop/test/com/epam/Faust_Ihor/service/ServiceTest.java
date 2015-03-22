@@ -135,7 +135,7 @@ public class ServiceTest {
 	Date date = sdf.parse("12-03");
 	Order expected = new Order(forOrder, date);
 	orders.add(date, expected);
-	List<Order> actual = service.getOrdersBetween(sdf.parse("10-03"), sdf.parse("15-03"));
+	List<Order> actual = service.findOrdersBetween(sdf.parse("10-03"), sdf.parse("15-03"));
 	assertTrue(actual.size() == 1);
 	assertTrue(actual.get(0).equals(expected));
     }

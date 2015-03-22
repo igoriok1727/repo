@@ -11,7 +11,7 @@ public class GoodInMapAccess {
     private Map<Long, WritingGood> goods;
 
 
-    public GoodInMapAccess(Map<Long, WritingGood> goods) {
+    GoodInMapAccess(Map<Long, WritingGood> goods) {
 	if (goods == null) {
 	    throw new NullPointerException("goods is null");
 	}

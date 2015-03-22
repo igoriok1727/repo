@@ -1,10 +1,7 @@
 package com.epam.Faust_Ihor.service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map.Entry;
 
 import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
 import com.epam.Faust_Ihor.entity.Order;
@@ -53,25 +50,12 @@ public class Service {
 	return data.nearestTo(date);
     }
 
-    public List<Order> getOrdersBetween(Date first, Date last) {
-	return data.getOrdersBetween(first, last);
+    public List<Order> findOrdersBetween(Date first, Date last) {
+	return data.findOrdersBetween(first, last);
     }
 
     public List<WritingGood> getListItemsFromTheBucket() {
-	List<WritingGood> wgList = new ArrayList<WritingGood>();
-
-	Iterator<Entry<Long, Integer>> it = data.getItemsFromBucket()
-		.iterator();
-
-	while (it.hasNext()) {
-	    Entry<Long, Integer> entry = it.next();
-	    int count = entry.getValue();
-	    for (int i = 0; i < count; i++) {
-		wgList.add(data.get(entry.getKey()));
-	    }
-	}
-
-	return wgList;
+	return data.getItemsFromBucket();
     }
 
 }
