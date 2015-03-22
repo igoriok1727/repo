@@ -2,7 +2,7 @@ package com.epam.Faust_Ihor.userInterface;
 
 import com.epam.Faust_Ihor.service.Service;
 
-public abstract class Shop {
+public abstract class ShopCommand {
 
     
     public static final int SHOW_ALL_GOODS = 1;
@@ -21,11 +21,18 @@ public abstract class Shop {
 	System.out.println("Choose command:");
 	System.out.println(SHOW_ALL_GOODS + ": show all goods\n"
 		+ ADD_GOOD_TO_BUCKET + ": add item to the bucket\n"
-		+ SHOW_BUCKET + ": Show bucket\n" 
+		+ SHOW_BUCKET + ": show bucket\n" 
 		+ BUY + ": buy all in bucket\n" 
 		+ SHOW_NEAREST_ORDER + ": find nearest order after date\n" 
 		+ SHOW_ORDERS_BETWEEN + ": find orders between dates\n" 
-		+ SHOW_POPULAR + ": popular goods\n" + EXIT + ": close\n");
+		+ SHOW_POPULAR + ": popular goods\n" 
+		+ EXIT + ": close\n");
+    }
+    
+    public void checkOnNull(Service service) {
+	if (service == null) {
+	    throw new NullPointerException("service is null");
+	}
     }
 
 }

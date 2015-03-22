@@ -24,7 +24,7 @@ public class Dialog {
 
 	int a = -1;
 	do {
-	    Shop.showDialog();
+	    ShopCommand.showDialog();
 	    try {
 		a = Integer.valueOf(scn.nextLine());
 	    } catch (NumberFormatException nfe) {
@@ -36,13 +36,13 @@ public class Dialog {
 
     }
     
-    /*Этот метод приводит к зацикливанию. Сканер сам по себе че-то считывает после ексепшна*/
+    /*This method works strange when input is incorrect*/
     public void runNextInt() {
 	Scanner scn = new Scanner(System.in);
 
 	int a = -1;
 	do {
-	    Shop.showDialog();
+	    ShopCommand.showDialog();
 
 	    if (scn.hasNextInt()) {
 		a = scn.nextInt();

@@ -3,27 +3,27 @@ package com.epam.Faust_Ihor.userInterface.console;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.epam.Faust_Ihor.userInterface.Shop;
+import com.epam.Faust_Ihor.userInterface.ShopCommand;
 
 public class ConsoleCommandContainer {
 
-    private static Map<Integer, Shop> map = new HashMap<Integer, Shop>();
+    private static Map<Integer, ShopCommand> map = new HashMap<Integer, ShopCommand>();
     
-    private static final Shop DEFAUL_COMMAND = new DefaultCommand(); 
+    private static final ShopCommand DEFAUL_COMMAND = new DefaultCommand(); 
     
     static {
-	map.put(Shop.DEFAULT_COMMAND, DEFAUL_COMMAND);
-	map.put(Shop.SHOW_ALL_GOODS, new ShowAllGoods());
-	map.put(Shop.ADD_GOOD_TO_BUCKET, new AddGoodToBucket());
-	map.put(Shop.SHOW_BUCKET, new ShowBucket());
-	map.put(Shop.BUY, new BuyAllInBucket());
-	map.put(Shop.SHOW_NEAREST_ORDER, new FindNearestOrder());
-	map.put(Shop.SHOW_ORDERS_BETWEEN, new FindOrdersBetweenDates());
-	map.put(Shop.SHOW_POPULAR, new FindPopularGoods());
-	map.put(Shop.EXIT, new Exit());
+	map.put(ShopCommand.DEFAULT_COMMAND, DEFAUL_COMMAND);
+	map.put(ShopCommand.SHOW_ALL_GOODS, new ShowAllGoods());
+	map.put(ShopCommand.ADD_GOOD_TO_BUCKET, new AddGoodToBucket());
+	map.put(ShopCommand.SHOW_BUCKET, new ShowBucket());
+	map.put(ShopCommand.BUY, new BuyAllInBucket());
+	map.put(ShopCommand.SHOW_NEAREST_ORDER, new FindNearestOrder());
+	map.put(ShopCommand.SHOW_ORDERS_BETWEEN, new FindOrdersBetweenDates());
+	map.put(ShopCommand.SHOW_POPULAR, new FindPopularGoods());
+	map.put(ShopCommand.EXIT, new Exit());
     }
     
-    public static Shop get(Integer commandNumber) {
+    public static ShopCommand get(Integer commandNumber) {
 	if (map.containsKey(commandNumber)) {
 	    return map.get(commandNumber);
 	} 

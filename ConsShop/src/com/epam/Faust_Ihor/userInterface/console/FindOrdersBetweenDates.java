@@ -7,12 +7,13 @@ import java.util.List;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.service.Service;
 import com.epam.Faust_Ihor.userInterface.DateReader;
-import com.epam.Faust_Ihor.userInterface.Shop;
+import com.epam.Faust_Ihor.userInterface.ShopCommand;
 
-public class FindOrdersBetweenDates extends Shop {
+public class FindOrdersBetweenDates extends ShopCommand {
 
     @Override
     public void dialog(Service service) {
+	checkOnNull(service);
 
 	List<Order> orders = findOrders(service);
 	if (orders == null || orders.size() == 0) {

@@ -3,18 +3,19 @@ package com.epam.Faust_Ihor.userInterface.console;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.service.Service;
 import com.epam.Faust_Ihor.userInterface.DateReader;
-import com.epam.Faust_Ihor.userInterface.Shop;
+import com.epam.Faust_Ihor.userInterface.ShopCommand;
 
-public class FindNearestOrder extends Shop {
+public class FindNearestOrder extends ShopCommand {
 
     @Override
     public void dialog(Service service) {
+	checkOnNull(service);
 	System.out.println("Searching nearest order after a given date: ");
 
 	DateReader dr = new DateReader();
-	
-	Order order = service.findNearestOrder(dr
-		.readDate("Date(format " + dr.getFormat() + "): "));
+
+	Order order = service.findNearestOrder(dr.readDate("Date(format "
+		+ dr.getFormat() + "): "));
 	if (order == null) {
 	    System.out.println("No orders found");
 	} else {

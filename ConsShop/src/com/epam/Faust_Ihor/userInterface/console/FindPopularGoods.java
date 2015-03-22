@@ -5,12 +5,13 @@ import java.util.ListIterator;
 
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.userInterface.Shop;
+import com.epam.Faust_Ihor.userInterface.ShopCommand;
 
-public class FindPopularGoods extends Shop {
+public class FindPopularGoods extends ShopCommand {
 
     @Override
     public void dialog(Service service) {
+	checkOnNull(service);
 	System.out.println("Popular goods: ");
 	List<WritingGood> list = service.getAllItems();
 	ListIterator<WritingGood> it = list.listIterator(list.size());

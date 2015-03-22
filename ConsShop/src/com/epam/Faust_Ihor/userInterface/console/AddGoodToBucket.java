@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.userInterface.Shop;
+import com.epam.Faust_Ihor.userInterface.ShopCommand;
 
-public class AddGoodToBucket extends Shop {
-
+public class AddGoodToBucket extends ShopCommand {
+   
     @SuppressWarnings("resource")
     @Override
     public void dialog(Service service) {
+	checkOnNull(service);
 	System.out.println("Adding a good to a bucket");
 	System.out.print("Code: ");
 	long code = 0;

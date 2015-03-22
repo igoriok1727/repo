@@ -4,12 +4,13 @@ import java.util.Date;
 
 import com.epam.Faust_Ihor.service.Service;
 import com.epam.Faust_Ihor.userInterface.DateReader;
-import com.epam.Faust_Ihor.userInterface.Shop;
+import com.epam.Faust_Ihor.userInterface.ShopCommand;
 
-public class BuyAllInBucket extends Shop {
+public class BuyAllInBucket extends ShopCommand {
 
     @Override
     public void dialog(Service service) {
+	checkOnNull(service);
 
 	if (service.isBucketEmpty()) {
 	    System.out.println("Bucket is empty");
