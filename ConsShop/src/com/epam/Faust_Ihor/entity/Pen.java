@@ -8,9 +8,9 @@ package com.epam.Faust_Ihor.entity;
  */
 public class Pen extends WritingItem {
 
-    final private String type;
+    final private PenType type;
 
-    public Pen(String title, double price, String color, String type) {
+    public Pen(String title, double price, String color, PenType type) {
 	super(title, price, color);
 	if (title == null || color == null || type == null) {
 	    throw new NullPointerException();
@@ -18,7 +18,7 @@ public class Pen extends WritingItem {
 	this.type = type;
     }
 
-    public String getType() {
+    public PenType getType() {
 	return type;
     }
 

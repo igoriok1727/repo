@@ -9,22 +9,22 @@ package com.epam.Faust_Ihor.entity;
  */
 public abstract class WritingItem extends WritingGood {
 
-	private final String colour;
+	private final String color;
 	
 	public WritingItem(String title, double price, String color) {
 		super(title, price);
-		this.colour = color;
+		this.color = color;
 	}
 	
 	public String getColor() {
-		return colour;
+		return color;
 	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((colour == null) ? 0 : colour.hashCode());
+		result = prime * result + ((color == null) ? 0 : color.hashCode());
 		return result;
 	}
 
@@ -37,17 +37,17 @@ public abstract class WritingItem extends WritingGood {
 		if (getClass() != obj.getClass())
 			return false;
 		WritingItem other = (WritingItem) obj;
-		if (colour == null) {
-			if (other.colour != null)
+		if (color == null) {
+			if (other.color != null)
 				return false;
-		} else if (!colour.equals(other.colour))
+		} else if (!color.equals(other.color))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "WritingItem [colour=" + colour + "]";
+		return "WritingItem [colour=" + color + "]";
 	}
 	
 	public abstract long code();

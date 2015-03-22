@@ -8,9 +8,9 @@ package com.epam.Faust_Ihor.entity;
  */
 public class Pencil extends WritingItem {
 
-    private String thickness;
+    private final Thickness thickness;
 
-    public Pencil(String title, double price, String color, String thickness) {
+    public Pencil(String title, double price, String color, Thickness thickness) {
 	super(title, price, color);
 	if (title == null || color == null || thickness == null) {
 	    throw new NullPointerException();
@@ -18,12 +18,8 @@ public class Pencil extends WritingItem {
 	this.thickness = thickness;
     }
 
-    public String getThickness() {
+    public Thickness getThickness() {
 	return thickness;
-    }
-
-    public void setThickness(String thickness) {
-	this.thickness = thickness;
     }
 
     @Override

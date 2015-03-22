@@ -10,11 +10,9 @@ package com.epam.Faust_Ihor.entity;
 public abstract class WritingGood {
 
 	/*The name-on-the-box of the good*/
-	private String title;
+	private final String title;
 	
 	private double price;
-
-	public WritingGood(){}
 
 	public WritingGood(String title, double price) {
 		this.title = title;
@@ -23,10 +21,6 @@ public abstract class WritingGood {
 	
 	public String getTitle() {
 		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public double getPrice() {

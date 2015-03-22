@@ -8,7 +8,9 @@ import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
 import com.epam.Faust_Ihor.dataAccess.console.MapAccess;
 import com.epam.Faust_Ihor.entity.Notebook;
 import com.epam.Faust_Ihor.entity.Pen;
+import com.epam.Faust_Ihor.entity.PenType;
 import com.epam.Faust_Ihor.entity.Pencil;
+import com.epam.Faust_Ihor.entity.Thickness;
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.service.Service;
 import com.epam.Faust_Ihor.storage.Bucket;
@@ -19,15 +21,15 @@ public class Main {
 
     private static final Notebook NOTEBOOK1 = new Notebook("NBtitle1", 22, 40);
     private static final Notebook NOTEBOOK2 = new Notebook("NBtitle2", 15, 70);
-    private static final Pen PEN1 = new Pen("Ptitle1", 22, "Black", "Gel");
-    private static final Pen PEN2 = new Pen("Ptitle2", 15, "Blue", "Ball");
-    private static final Pen PEN3 = new Pen("Ptitle1", 22, "Orange", "Ball");
+    private static final Pen PEN1 = new Pen("Ptitle1", 22, "Black", PenType.BALL);
+    private static final Pen PEN2 = new Pen("Ptitle2", 15, "Blue", PenType.GEL);
+    private static final Pen PEN3 = new Pen("Ptitle1", 22, "Orange", PenType.FOUNTAIN);
     private static final Pencil PENCIL1 = new Pencil("PLtitle2", 15, "Black",
-	    "H");
+	    Thickness.B);
     private static final Pencil PENCIL2 = new Pencil("PLtitle1", 10, "Blue",
-	    "B");
+	    Thickness.HH);
     private static final Pencil PENCIL3 = new Pencil("PLtitle2", 12.5,
-	    "Orange", "BB");
+	    "Orange", Thickness.HB);
 
     private static Map<Long, WritingGood> data = new LinkedHashMap<Long, WritingGood>(20, 0.8f, true);
 
