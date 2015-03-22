@@ -3,6 +3,8 @@ package com.epam.Faust_Ihor.service;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -15,6 +17,7 @@ import org.junit.Test;
 import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
 import com.epam.Faust_Ihor.dataAccess.console.MapAccess;
 import com.epam.Faust_Ihor.entity.Notebook;
+import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.Pen;
 import com.epam.Faust_Ihor.entity.PenType;
 import com.epam.Faust_Ihor.entity.Pencil;
@@ -40,6 +43,8 @@ public class ServiceTest {
     private static Map<Long, WritingGood> data = new LinkedHashMap<Long, WritingGood>(
 	    20, 0.8f, true);
 
+    private List<WritingGood> forOrder;
+    
     Bucket bucket;
     OrderStorage orders;
     DataAccessObject dao;
@@ -57,12 +62,20 @@ public class ServiceTest {
 	data.put(PENCIL2.code(), PENCIL2);
 	data.put(PENCIL3.code(), PENCIL3);
 	
+	forOrder = new ArrayList<WritingGood>();
+	forOrder.add(NOTEBOOK1);
+	
 	bucket = new Bucket();
 	orders = new OrderStorage();
 	dao = new MapAccess(data, bucket, orders);
 	service = new Service(dao);
     }
 
+    @Test(expected=NullPointerException.class)
+    public void NPEIsThrownWhenPutNulToServiceConstructor() {
+	service = new Service(null);
+    }
+    
     @Test
     public void getAllTest() {
 	List<WritingGood> wgList = service.getAllItems();
@@ -93,6 +106,38 @@ public class ServiceTest {
 	service.addToBucket(PEN1.code());
 	service.addToBucket(PEN3.code());
 	assertTrue(service.buyAll(new Date()) == 44);
-    } 
+    }
+    
+    @Test
+    public void findNearestOrderTest() throws ParseException {
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");
+	Date date = sdf.parse("12-03");
+	Order expected = new Order(forOrder, date);
+	orders.add(date, expected);
+	Order actual = service.findNearestOrder(date);
+	assertTrue(actual.equals(expected));
+	
+    }
+    
+    @Test
+    public void findNearestOrderReturnsNullIfNoOrderFound() throws ParseException {
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");
+	Date date = sdf.parse("12-03");
+	Order expected = new Order(forOrder, date);
+	orders.add(date, expected);
+	Order actual1 = service.findNearestOrder(sdf.parse("15-03"));
+	assertTrue(actual1 == null);
+    }
+    
+    @Test
+    public void findOrdersBetweenDates() throws ParseException {
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM");
+	Date date = sdf.parse("12-03");
+	Order expected = new Order(forOrder, date);
+	orders.add(date, expected);
+	List<Order> actual = service.getOrdersBetween(sdf.parse("10-03"), sdf.parse("15-03"));
+	assertTrue(actual.size() == 1);
+	assertTrue(actual.get(0).equals(expected));
+    }
     
 }
