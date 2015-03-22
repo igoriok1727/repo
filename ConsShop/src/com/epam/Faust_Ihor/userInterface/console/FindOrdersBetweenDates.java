@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.ui.console;
+package com.epam.Faust_Ihor.userInterface.console;
 
 import java.util.Date;
 import java.util.Iterator;
@@ -6,15 +6,15 @@ import java.util.List;
 
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.ui.DateReader;
-import com.epam.Faust_Ihor.ui.Shop;
+import com.epam.Faust_Ihor.userInterface.DateReader;
+import com.epam.Faust_Ihor.userInterface.Shop;
 
 public class FindOrdersBetweenDates extends Shop {
 
     @Override
     public void dialog(Service service) {
 
-	List<Order> orders = find(service);
+	List<Order> orders = findOrders(service);
 	if (orders == null || orders.size() == 0) {
 	    System.out.println("No orders found");
 	} else {
@@ -24,11 +24,14 @@ public class FindOrdersBetweenDates extends Shop {
 	System.out.println();
     }
 
-    private List<Order> find(Service service) {
+    private List<Order> findOrders(Service service) {
 	System.out.println("Searching orders between two dates: ");
 
-	Date first = DateReader.readDate("Enter first date(format " + DateReader.getFormat() + "): ");
-	Date second = DateReader.readDate("Enter second date(format " + DateReader.getFormat() + "): ");
+	DateReader dr = new DateReader();
+	Date first = dr.readDate("Enter first date(format " + dr.getFormat()
+		+ "): ");
+	Date second = dr.readDate("Enter second date(format " + dr.getFormat()
+		+ "): ");
 	List<Order> orders = service.getOrdersBetween(first, second);
 
 	return orders;

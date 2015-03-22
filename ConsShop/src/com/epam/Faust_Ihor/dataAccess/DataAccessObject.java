@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.dao;
+package com.epam.Faust_Ihor.dataAccess;
 
 import java.util.Date;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 
-public interface Dao {
+public interface DataAccessObject {
 
 	WritingGood get(long code);
 	

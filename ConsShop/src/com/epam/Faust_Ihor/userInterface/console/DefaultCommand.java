@@ -1,7 +1,7 @@
-package com.epam.Faust_Ihor.ui.console;
+package com.epam.Faust_Ihor.userInterface.console;
 
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.ui.Shop;
+import com.epam.Faust_Ihor.userInterface.Shop;
 
 public class DefaultCommand extends Shop {
 

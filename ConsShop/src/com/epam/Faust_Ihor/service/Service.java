@@ -6,15 +6,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
-import com.epam.Faust_Ihor.dao.Dao;
+import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 
 public class Service {
 
-    private Dao data;
+    private DataAccessObject data;
 
-    public Service(Dao data) {
+    public Service(DataAccessObject data) {
 	if (data == null) {
 	    throw new NullPointerException("data is null");
 	}

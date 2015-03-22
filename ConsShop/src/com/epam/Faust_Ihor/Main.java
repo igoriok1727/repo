@@ -4,8 +4,8 @@ import java.text.ParseException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.epam.Faust_Ihor.dao.Dao;
-import com.epam.Faust_Ihor.dao.console.MapDao;
+import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
+import com.epam.Faust_Ihor.dataAccess.console.MapAccess;
 import com.epam.Faust_Ihor.entity.Notebook;
 import com.epam.Faust_Ihor.entity.Pen;
 import com.epam.Faust_Ihor.entity.Pencil;
@@ -13,7 +13,7 @@ import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.service.Service;
 import com.epam.Faust_Ihor.storage.Bucket;
 import com.epam.Faust_Ihor.storage.OrderStorage;
-import com.epam.Faust_Ihor.ui.Dialog;
+import com.epam.Faust_Ihor.userInterface.Dialog;
 
 public class Main {
 
@@ -45,7 +45,7 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 	Bucket bucket = new Bucket();
 	OrderStorage orders = new OrderStorage();
-	Dao dao = new MapDao(data, bucket, orders);
+	DataAccessObject dao = new MapAccess(data, bucket, orders);
 	Service service = new Service(dao);
 	Dialog dialog = new Dialog(service);
 	

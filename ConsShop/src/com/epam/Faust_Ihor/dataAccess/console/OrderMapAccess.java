@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.dao.console;
+package com.epam.Faust_Ihor.dataAccess.console;
 
 import java.util.Date;
 import java.util.List;
@@ -7,11 +7,11 @@ import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.storage.OrderStorage;
 
-public class MapOrderDao {
+public class OrderMapAccess {
 
     private OrderStorage orders;
 
-    public MapOrderDao(OrderStorage orders) {
+    public OrderMapAccess(OrderStorage orders) {
 	if (orders == null) {
 	    throw new NullPointerException("orders is null");
 	}

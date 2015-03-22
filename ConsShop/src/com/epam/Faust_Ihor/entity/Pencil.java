@@ -8,60 +8,63 @@ package com.epam.Faust_Ihor.entity;
  */
 public class Pencil extends WritingItem {
 
-	private String thickness;
-	
-	public Pencil(String title, double price, String color, String thickness) {
-		super(title, price, color);
-		this.thickness = thickness;
-	}
-	
-	public String getThickness() {
-		return thickness;
-	}
+    private String thickness;
 
-	public void setThickness(String thickness) {
-		this.thickness = thickness;
+    public Pencil(String title, double price, String color, String thickness) {
+	super(title, price, color);
+	if (title == null || color == null || thickness == null) {
+	    throw new NullPointerException();
 	}
+	this.thickness = thickness;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((thickness == null) ? 0 : thickness.hashCode());
-		return result;
-	}
+    public String getThickness() {
+	return thickness;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pencil other = (Pencil) obj;
-		if (thickness == null) {
-			if (other.thickness != null)
-				return false;
-		} else if (!thickness.equals(other.thickness))
-			return false;
-		return true;
-	}
+    public void setThickness(String thickness) {
+	this.thickness = thickness;
+    }
 
-	@Override
-	public String toString() {
-		return "Pencil [thickness=" + thickness + ", code=" + code()
-				+ ", color=" + getColor() + ", title=" + getTitle()
-				+ ", price=" + getPrice() + "]";
-	}
+    @Override
+    public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result
+		+ ((thickness == null) ? 0 : thickness.hashCode());
+	return result;
+    }
 
-	public long code(){
-		final int prime = 31;
-		long result = prime + 1 * getTitle().hashCode();
-		result = prime + result * getColor().hashCode();
-		result = prime + result * thickness.hashCode();
-		return result + Integer.MAX_VALUE;
-	}
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj)
+	    return true;
+	if (obj == null)
+	    return false;
+	if (getClass() != obj.getClass())
+	    return false;
+	Pencil other = (Pencil) obj;
+	if (thickness == null) {
+	    if (other.thickness != null)
+		return false;
+	} else if (!thickness.equals(other.thickness))
+	    return false;
+	return true;
+    }
+
+    @Override
+    public String toString() {
+	return "Pencil [title=" + getTitle() + ", price=" + getPrice() 
+		+ ", color=" + getColor() + ", thickness=" + thickness 
+		+ ", code=" + code() + "]";
+    }
+
+    public long code() {
+	final int prime = 31;
+	int result = getTitle().hashCode();
+	result = prime + result * getColor().hashCode();
+	result = prime + result * thickness.hashCode();
+	return (long) result + Integer.MAX_VALUE;
+    }
 
 }

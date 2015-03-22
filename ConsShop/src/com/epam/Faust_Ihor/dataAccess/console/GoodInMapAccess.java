@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.dao.console;
+package com.epam.Faust_Ihor.dataAccess.console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.Map;
 
 import com.epam.Faust_Ihor.entity.WritingGood;
 
-public class MapGoodDao {
+public class GoodInMapAccess {
 
     private Map<Long, WritingGood> goods;
 
 
-    public MapGoodDao(Map<Long, WritingGood> goods) {
+    public GoodInMapAccess(Map<Long, WritingGood> goods) {
 	if (goods == null) {
 	    throw new NullPointerException("goods is null");
 	}

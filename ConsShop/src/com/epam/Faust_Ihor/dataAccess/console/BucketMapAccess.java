@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.dao.console;
+package com.epam.Faust_Ihor.dataAccess.console;
 
 import java.util.Set;
 import java.util.Map.Entry;
@@ -6,11 +6,11 @@ import java.util.Map.Entry;
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.storage.Bucket;
 
-public class MapBucketDao {
+public class BucketMapAccess {
 
     private Bucket bucket;
 
-    public MapBucketDao(Bucket bucket) {
+    public BucketMapAccess(Bucket bucket) {
 	if (bucket == null) {
 	    throw new NullPointerException("bucket is null");
 	}

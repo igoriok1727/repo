@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.dao.console;
+package com.epam.Faust_Ihor.dataAccess.console;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,21 +7,21 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.epam.Faust_Ihor.dao.Dao;
+import com.epam.Faust_Ihor.dataAccess.DataAccessObject;
 import com.epam.Faust_Ihor.entity.Order;
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.storage.Bucket;
 import com.epam.Faust_Ihor.storage.OrderStorage;
 
-public class MapDao implements Dao {
+public class MapAccess implements DataAccessObject {
 
-    private MapBucketDao bucket;
+    private BucketMapAccess bucket;
     
-    private MapOrderDao orders;
+    private OrderMapAccess orders;
     
-    private MapGoodDao goods;
+    private GoodInMapAccess goods;
 
-    public MapDao(Map<Long, WritingGood> goods, Bucket bucket, OrderStorage orders) {
+    public MapAccess(Map<Long, WritingGood> goods, Bucket bucket, OrderStorage orders) {
 	if (goods == null) {
 	    throw new NullPointerException("data is null");
 	}
@@ -31,9 +31,9 @@ public class MapDao implements Dao {
 	if (orders == null) {
 	    throw new NullPointerException("orders is null");
 	}
-	this.bucket = new MapBucketDao(bucket);
-	this.orders = new MapOrderDao(orders);
-	this.goods = new MapGoodDao(goods);
+	this.bucket = new BucketMapAccess(bucket);
+	this.orders = new OrderMapAccess(orders);
+	this.goods = new GoodInMapAccess(goods);
     }
     
     public WritingGood get(long code) {

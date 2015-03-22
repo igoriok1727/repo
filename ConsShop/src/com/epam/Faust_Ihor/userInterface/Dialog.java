@@ -1,9 +1,9 @@
-package com.epam.Faust_Ihor.ui;
+package com.epam.Faust_Ihor.userInterface;
 
 import java.util.Scanner;
 
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.ui.console.ConsoleCommandContainer;
+import com.epam.Faust_Ihor.userInterface.console.ConsoleCommandContainer;
 
 public class Dialog {
 

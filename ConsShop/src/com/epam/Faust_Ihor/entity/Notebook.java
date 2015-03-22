@@ -12,6 +12,9 @@ public class Notebook extends WritingGood {
 	
 	public Notebook(String title, double price, int pageCount){
 		super(title, price);
+		if (title == null) {
+		    throw new NullPointerException();
+		}
 		this.pageCount = pageCount;
 	}
 	
@@ -44,16 +47,16 @@ public class Notebook extends WritingGood {
 	
 	@Override
 	public String toString() {
-		return "Notebook [pageCount=" + pageCount + ", code=" + code()
-				+ ", title=" + getTitle() + ", price=" + getPrice()
+		return "Notebook [title=" + getTitle() + ", price=" + getPrice()
+				+ ", pageCount=" + pageCount + ", code=" + code()
 				+ "]";
 	}
 
 	public long code(){
 		final int prime = 31;
-		long result = prime + 1 * getTitle().hashCode();
+		int result = getTitle().hashCode();
 		result = prime + result * pageCount;
-		return result + Integer.MAX_VALUE;
+		return (long) result + Integer.MAX_VALUE;
 	}
 
 	

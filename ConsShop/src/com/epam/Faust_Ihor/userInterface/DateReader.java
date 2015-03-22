@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.ui;
+package com.epam.Faust_Ihor.userInterface;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +10,7 @@ public class DateReader {
     
     private static String dateFormat = "dd-MM-yyyy HH:mm";
     
-    public static Date readDate(String dialogString) {
+    public Date readDate(String dialogString) {
 	SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 	while (true) {
 	    System.out.print(dialogString);
@@ -25,7 +25,7 @@ public class DateReader {
 	}
     }
     
-    public static String getFormat() {
+    public String getFormat() {
 	return dateFormat;
     }
     

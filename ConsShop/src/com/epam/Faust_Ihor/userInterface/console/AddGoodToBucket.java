@@ -1,10 +1,10 @@
-package com.epam.Faust_Ihor.ui.console;
+package com.epam.Faust_Ihor.userInterface.console;
 
 import java.util.Scanner;
 
 import com.epam.Faust_Ihor.entity.WritingGood;
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.ui.Shop;
+import com.epam.Faust_Ihor.userInterface.Shop;
 
 public class AddGoodToBucket extends Shop {
 

@@ -1,4 +1,4 @@
-package com.epam.Faust_Ihor.ui;
+package com.epam.Faust_Ihor.userInterface;
 
 import com.epam.Faust_Ihor.service.Service;
 

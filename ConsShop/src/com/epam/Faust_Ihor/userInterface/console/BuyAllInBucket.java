@@ -1,10 +1,10 @@
-package com.epam.Faust_Ihor.ui.console;
+package com.epam.Faust_Ihor.userInterface.console;
 
 import java.util.Date;
 
 import com.epam.Faust_Ihor.service.Service;
-import com.epam.Faust_Ihor.ui.DateReader;
-import com.epam.Faust_Ihor.ui.Shop;
+import com.epam.Faust_Ihor.userInterface.DateReader;
+import com.epam.Faust_Ihor.userInterface.Shop;
 
 public class BuyAllInBucket extends Shop {
 
@@ -15,7 +15,8 @@ public class BuyAllInBucket extends Shop {
 	    System.out.println("Bucket is empty");
 	} else {
 	    System.out.println("Making an order");
-	    Date date = DateReader.readDate("Date(format " + DateReader.getFormat() + "): ");
+	    DateReader dr = new DateReader();
+	    Date date = dr.readDate("Date(format " + dr.getFormat() + "): ");
 	    double total = service.buyAll(date);
 	    System.out.println("Order's made.\nTotal: " + total);
 	}

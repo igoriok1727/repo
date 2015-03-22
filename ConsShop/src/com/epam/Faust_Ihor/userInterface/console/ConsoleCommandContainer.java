@@ -1,9 +1,9 @@
-package com.epam.Faust_Ihor.ui.console;
+package com.epam.Faust_Ihor.userInterface.console;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.epam.Faust_Ihor.ui.Shop;
+import com.epam.Faust_Ihor.userInterface.Shop;
 
 public class ConsoleCommandContainer {
 
